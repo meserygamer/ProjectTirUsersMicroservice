@@ -1,4 +1,6 @@
 
+using ProjectTirUsersMicroservice.API.Endpoints;
+
 namespace ProjectTirUsersMicroservice.API
 {
     public class Program
@@ -23,6 +25,8 @@ namespace ProjectTirUsersMicroservice.API
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
+            app.AddUsersEndpoints();
 
             app.Run();
         }
