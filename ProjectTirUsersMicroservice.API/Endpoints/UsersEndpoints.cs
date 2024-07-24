@@ -1,4 +1,5 @@
-﻿using ProjectTirUsersMicroservice.API.Contracts.UsersEndpoints.Response;
+﻿using Microsoft.AspNetCore.Mvc;
+using ProjectTirUsersMicroservice.API.Contracts.UsersEndpoints.Response;
 
 namespace ProjectTirUsersMicroservice.API.Endpoints
 {
@@ -9,13 +10,19 @@ namespace ProjectTirUsersMicroservice.API.Endpoints
             var group = builder.MapGroup("Users");
 
             group.MapGet("GetUserById", GetUserById);
+            group.MapPost("CreateUser", CreateUser);
 
             return builder;
         }
 
-        private static async Task<UserResponse> GetUserById()
+        private static async Task<UserResponse> GetUserById([FromQuery] int userId)
         {
             return new UserResponse();
+        }
+
+        private static async Task<UserResponse> CreateUser([FromBody] )
+        {
+
         }
     }
 }
