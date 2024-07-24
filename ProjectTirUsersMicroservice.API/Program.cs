@@ -1,5 +1,6 @@
 
 using ProjectTirUsersMicroservice.API.Endpoints;
+using ProjectTirUsersMicroservice.Database;
 
 namespace ProjectTirUsersMicroservice.API
 {
@@ -13,6 +14,8 @@ namespace ProjectTirUsersMicroservice.API
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<MicroserviceDbContext>();
 
             var app = builder.Build();
 

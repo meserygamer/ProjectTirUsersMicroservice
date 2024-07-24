@@ -9,6 +9,7 @@ namespace ProjectTirUsersMicroservice.Database
         public MicroserviceDbContext(IConfiguration configuration)
         {
             _configuration = configuration;
+            Database.MigrateAsync();
         }
 
 
