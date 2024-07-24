@@ -1,5 +1,3 @@
-
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using ProjectTirUsersMicroservice.API.Endpoints;
 using ProjectTirUsersMicroservice.Database;

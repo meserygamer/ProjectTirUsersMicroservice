@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectTirUsersMicroservice.API.Contracts.UsersEndpoints.Requests;
 using ProjectTirUsersMicroservice.API.Contracts.UsersEndpoints.Response;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectTirUsersMicroservice.API.Endpoints
 {
@@ -21,9 +22,19 @@ namespace ProjectTirUsersMicroservice.API.Endpoints
             return new UserResponse();
         }
 
-        private static async Task<UserResponse> CreateUser([FromBody] CreateUserRequest request)
+        private static async Task<IResult> CreateUser([FromBody] CreateUserRequest request)
         {
-            return new UserResponse();
+            if (!ValidateCreateUserRequest(request, out List<ValidationResult> errors))
+                return Results.BadRequest(errors);
+
+            return Results.Json(request);
+        }
+
+        private static bool ValidateCreateUserRequest(CreateUserRequest request, out List<ValidationResult> errors)
+        {
+            errors = new List<ValidationResult>();
+            ValidationContext context = new ValidationContext(request);
+            return Validator.TryValidateObject(request, context, errors, true);
         }
     }
 }
