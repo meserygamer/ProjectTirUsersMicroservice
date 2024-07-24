@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectTirUsersMicroservice.API.Contracts.UsersEndpoints.Requests;
 using ProjectTirUsersMicroservice.API.Contracts.UsersEndpoints.Response;
 
 namespace ProjectTirUsersMicroservice.API.Endpoints
@@ -20,9 +21,9 @@ namespace ProjectTirUsersMicroservice.API.Endpoints
             return new UserResponse();
         }
 
-        private static async Task<UserResponse> CreateUser([FromBody] )
+        private static async Task<UserResponse> CreateUser([FromBody] CreateUserRequest request)
         {
-
+            return new UserResponse();
         }
     }
 }

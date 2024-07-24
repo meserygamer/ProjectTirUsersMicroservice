@@ -1,4 +1,6 @@
 
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using ProjectTirUsersMicroservice.API.Endpoints;
 using ProjectTirUsersMicroservice.Database;
 
@@ -13,7 +15,12 @@ namespace ProjectTirUsersMicroservice.API
             builder.Services.AddAuthorization();
 
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(o => 
+            o.MapType<DateOnly>(() => new OpenApiSchema
+            {
+                Type = "string",
+                Format = "date"
+            }));
 
             builder.Services.AddDbContext<MicroserviceDbContext>();
 
