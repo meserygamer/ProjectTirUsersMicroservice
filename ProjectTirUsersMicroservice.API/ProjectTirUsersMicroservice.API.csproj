@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectTirUsersMicroservice.Database\ProjectTirUsersMicroservice.Database.csproj" />
+    <ProjectReference Include="..\ProjectTirUsersMicroservice.Database\ProjectTirUsersMicroservice.Database.PostgreSQL.csproj" />
   </ItemGroup>
 
 </Project>

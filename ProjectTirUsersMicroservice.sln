@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTirUsersMicroservice.API", "ProjectTirUsersMicroservice.API\ProjectTirUsersMicroservice.API.csproj", "{EA6AC700-A4BF-4705-ABDA-9296878E4B0B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTirUsersMicroservice.Database", "ProjectTirUsersMicroservice.Database\ProjectTirUsersMicroservice.Database.csproj", "{EDD8AD8D-DBDD-4AD9-BE37-E974376C45CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTirUsersMicroservice.Database.PostgreSQL", "ProjectTirUsersMicroservice.Database.PostgreSQL\ProjectTirUsersMicroservice.Database.PostgreSQL.csproj", "{EDD8AD8D-DBDD-4AD9-BE37-E974376C45CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectTirUsersMicroservice.Infrastructure", "ProjectTirUsersMicroservice.Infrastructure\ProjectTirUsersMicroservice.Infrastructure.csproj", "{98B9FB67-931C-4748-BA97-F64EAB7681ED}"
 EndProject
