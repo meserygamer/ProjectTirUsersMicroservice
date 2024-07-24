@@ -1,7 +1,6 @@
-﻿namespace ProjectTirUsersMicroservice.API.Contracts.UsersEndpoints.Response
+﻿namespace ProjectTirUsersMicroservice.Database.Entities
 {
-    [Serializable]
-    public class UserResponse
+    public class UserEntity
     {
         public int Id { get; set; }
 
