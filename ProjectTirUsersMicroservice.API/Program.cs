@@ -1,6 +1,6 @@
 using Microsoft.OpenApi.Models;
 using ProjectTirUsersMicroservice.API.Endpoints;
-using ProjectTirUsersMicroservice.Database;
+using ProjectTirUsersMicroservice.Database.PostgreSQL;
 
 namespace ProjectTirUsersMicroservice.API
 {

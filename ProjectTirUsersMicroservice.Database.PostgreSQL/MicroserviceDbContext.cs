@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using ProjectTirUsersMicroservice.Database.Entities;
+using ProjectTirUsersMicroservice.Database.PostgreSQL.Entities;
 
-namespace ProjectTirUsersMicroservice.Database
+namespace ProjectTirUsersMicroservice.Database.PostgreSQL
 {
     public class MicroserviceDbContext : DbContext
     {

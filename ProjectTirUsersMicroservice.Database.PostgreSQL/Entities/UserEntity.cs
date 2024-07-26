@@ -1,4 +1,4 @@
-﻿namespace ProjectTirUsersMicroservice.Database.Entities
+﻿namespace ProjectTirUsersMicroservice.Database.PostgreSQL.Entities
 {
     public class UserEntity
     {

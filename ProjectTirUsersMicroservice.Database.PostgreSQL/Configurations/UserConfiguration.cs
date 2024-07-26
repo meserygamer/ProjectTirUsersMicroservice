@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProjectTirUsersMicroservice.Database.Entities;
+using ProjectTirUsersMicroservice.Database.PostgreSQL.Entities;
 
-namespace ProjectTirUsersMicroservice.Database.Configurations
+namespace ProjectTirUsersMicroservice.Database.PostgreSQL.Configurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
     {
