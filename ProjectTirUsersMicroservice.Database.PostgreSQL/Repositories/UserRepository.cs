@@ -1,5 +1,8 @@
-﻿using ProjectTirUsersMicroservice.Core.DomainEntities;
+﻿using Mapster;
+using Microsoft.EntityFrameworkCore;
+using ProjectTirUsersMicroservice.Core.DomainEntities;
 using ProjectTirUsersMicroservice.Core.RepositoryInterfaces;
+using ProjectTirUsersMicroservice.Database.PostgreSQL.Entities;
 
 namespace ProjectTirUsersMicroservice.Database.PostgreSQL.Repositories
 {
@@ -14,14 +17,33 @@ namespace ProjectTirUsersMicroservice.Database.PostgreSQL.Repositories
         private readonly MicroserviceDbContext _context;
         
         
-        public User AddUser(User user)
+        public async Task<bool> AddUserAsync(User user)
         {
-            throw new NotImplementedException();
+            UserEntity dbEntity = user.Adapt<UserEntity>();
+            try
+            {
+                await _context.Users.AddAsync(dbEntity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public User GetUserById(int userId)
+        public async Task<User> GetUserByIdAsync(int userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                UserEntity dbEntity = await _context.Users.FirstAsync(e => e.Id == userId);
+                return dbEntity.Adapt<User>();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }
