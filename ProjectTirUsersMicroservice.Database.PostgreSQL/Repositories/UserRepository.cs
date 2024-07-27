@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using ProjectTirUsersMicroservice.Core.DomainEntities;
 using ProjectTirUsersMicroservice.Core.RepositoryInterfaces;
 using ProjectTirUsersMicroservice.Database.PostgreSQL.Entities;
@@ -17,18 +18,20 @@ namespace ProjectTirUsersMicroservice.Database.PostgreSQL.Repositories
         private readonly MicroserviceDbContext _context;
         
         
-        public async Task<bool> AddUserAsync(User user)
+        public async Task<User> AddUserAsync(User user)
         {
             UserEntity dbEntity = user.Adapt<UserEntity>();
             try
             {
-                await _context.Users.AddAsync(dbEntity);
+                EntityEntry<UserEntity> entityEntry = await _context.Users.AddAsync(dbEntity);
                 await _context.SaveChangesAsync();
-                return true;
+                await entityEntry.ReloadAsync();
+                return entityEntry.Entity.Adapt<User>();
             }
-            catch
+            catch (Exception e)
             {
-                return false;
+                Console.WriteLine(e);
+                throw;
             }
         }
 

@@ -2,6 +2,9 @@
 using ProjectTirUsersMicroservice.API.Contracts.UsersEndpoints.Requests;
 using ProjectTirUsersMicroservice.API.Contracts.UsersEndpoints.Response;
 using System.ComponentModel.DataAnnotations;
+using Mapster;
+using ProjectTirUsersMicroservice.Core.DomainEntities;
+using ProjectTirUsersMicroservice.Core.RepositoryInterfaces;
 
 namespace ProjectTirUsersMicroservice.API.Endpoints
 {
@@ -17,17 +20,24 @@ namespace ProjectTirUsersMicroservice.API.Endpoints
             return builder;
         }
 
-        private static async Task<UserResponse> GetUserById([FromQuery] int userId)
+        private static async Task<IResult> GetUserById([FromQuery] int userId,
+            IUserRepository userRepository)
         {
-            return new UserResponse();
+            if (userId < 1)
+                return Results.BadRequest("UserId must bigger than or equal to 1");
+
+            User response = await userRepository.GetUserByIdAsync(userId);
+            return Results.Json(response.Adapt<UserResponse>());
         }
 
-        private static async Task<IResult> CreateUser([FromBody] CreateUserRequest request)
+        private static async Task<IResult> CreateUser([FromBody] CreateUserRequest request,
+            IUserRepository userRepository)
         {
             if (!ValidateCreateUserRequest(request, out List<ValidationResult> errors))
                 return Results.BadRequest(errors);
-
-            return Results.Json(request);
+            
+            User response = await userRepository.AddUserAsync(request.Adapt<User>());
+            return Results.Json(response.Adapt<UserResponse>());
         }
 
         private static bool ValidateCreateUserRequest(CreateUserRequest request, out List<ValidationResult> errors)
